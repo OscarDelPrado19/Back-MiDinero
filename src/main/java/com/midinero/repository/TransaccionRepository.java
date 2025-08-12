@@ -12,8 +12,11 @@ import java.util.List;
 @Repository
 public interface TransaccionRepository extends JpaRepository<Transaccion, Long> {
     List<Transaccion> findByUsuarioIdOrderByFechaDesc(Long usuarioId);
+
+    // Solo transacciones no anuladas
+    List<Transaccion> findByUsuarioIdAndAnuladaFalseOrderByFechaDesc(Long usuarioId);
     
-    @Query("SELECT SUM(t.monto) FROM Transaccion t WHERE t.usuario.id = :usuarioId AND t.tipo = :tipo AND t.categoria = :categoria AND t.fecha >= :fechaInicio AND t.fecha <= :fechaFin")
+    @Query("SELECT SUM(t.monto) FROM Transaccion t WHERE t.usuario.id = :usuarioId AND t.tipo = :tipo AND t.categoria = :categoria AND t.anulada = false AND t.fecha >= :fechaInicio AND t.fecha <= :fechaFin")
     Double sumByUsuarioIdAndTipoAndCategoriaAndFechaBetween(
         @Param("usuarioId") Long usuarioId,
         @Param("tipo") Transaccion.TipoTransaccion tipo,
@@ -22,7 +25,7 @@ public interface TransaccionRepository extends JpaRepository<Transaccion, Long> 
         @Param("fechaFin") LocalDateTime fechaFin
     );
     
-    List<Transaccion> findByUsuarioIdAndTipoAndFechaBetween(
+    List<Transaccion> findByUsuarioIdAndTipoAndAnuladaFalseAndFechaBetween(
         Long usuarioId, 
         Transaccion.TipoTransaccion tipo, 
         LocalDateTime fechaInicio, 

@@ -1,3 +1,4 @@
+
 package com.midinero.entity;
 
 import jakarta.persistence.*;
@@ -39,6 +40,11 @@ public class Transaccion {
 
     @Column(length = 500)
     private String descripcion;
+        // Nueva: indica si la transacción fue anulada (soft delete)
+    @Column(name = "anulada", nullable = false)
+    private Boolean anulada = false;
+    public Boolean getAnulada() { return anulada; }
+    public void setAnulada(Boolean anulada) { this.anulada = anulada; }
 
     public enum TipoTransaccion {
         INGRESO, GASTO
@@ -47,7 +53,7 @@ public class Transaccion {
     // Constructors
     public Transaccion() {}
 
-    public Transaccion(Long id, Usuario usuario, TipoTransaccion tipo, String categoria, Double monto, LocalDateTime fecha, String descripcion) {
+    public Transaccion(Long id, Usuario usuario, TipoTransaccion tipo, String categoria, Double monto, LocalDateTime fecha, String descripcion, Boolean anulada) {
         this.id = id;
         this.usuario = usuario;
         this.tipo = tipo;
@@ -55,27 +61,62 @@ public class Transaccion {
         this.monto = monto;
         this.fecha = fecha;
         this.descripcion = descripcion;
+        this.anulada = anulada;
     }
 
-    // Getters and Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
 
-    public Usuario getUsuario() { return usuario; }
-    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public TipoTransaccion getTipo() { return tipo; }
-    public void setTipo(TipoTransaccion tipo) { this.tipo = tipo; }
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
-    public String getCategoria() { return categoria; }
-    public void setCategoria(String categoria) { this.categoria = categoria; }
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
-    public Double getMonto() { return monto; }
-    public void setMonto(Double monto) { this.monto = monto; }
+    public TipoTransaccion getTipo() {
+        return tipo;
+    }
 
-    public LocalDateTime getFecha() { return fecha; }
-    public void setFecha(LocalDateTime fecha) { this.fecha = fecha; }
+    public void setTipo(TipoTransaccion tipo) {
+        this.tipo = tipo;
+    }
 
-    public String getDescripcion() { return descripcion; }
-    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public Double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(Double monto) {
+        this.monto = monto;
+    }
+
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 }

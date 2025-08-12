@@ -177,8 +177,9 @@ public class TransaccionService {
             usuario.setSaldo(saldo);
             usuarioRepository.save(usuario);
 
-            transaccionRepository.delete(t);
-            return ApiResponse.success("Transacción eliminada exitosamente");
+            t.setAnulada(true);
+            transaccionRepository.save(t);
+            return ApiResponse.success("Transacción anulada exitosamente");
         } catch (Exception e) {
             return ApiResponse.error("Error al eliminar la transacción");
         }
@@ -199,6 +200,7 @@ public class TransaccionService {
         dto.setMonto(t.getMonto());     // Double
         dto.setDescripcion(t.getDescripcion());
         dto.setFecha(t.getFecha());
+        dto.setAnulada(t.getAnulada());
         return dto;
     }
 }

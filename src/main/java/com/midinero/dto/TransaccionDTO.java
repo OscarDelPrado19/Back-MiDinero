@@ -23,6 +23,9 @@ public class TransaccionDTO {
     private String descripcion;
     private LocalDateTime fecha;
 
+    // Indica si la transacción fue anulada (soft delete)
+    private Boolean anulada;
+
     public TransaccionDTO() {}
 
     public Long getId() { return id; }
@@ -39,6 +42,9 @@ public class TransaccionDTO {
 
     public String getDescripcion() { return descripcion; }
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+
+    public Boolean getAnulada() { return anulada; }
+    public void setAnulada(Boolean anulada) { this.anulada = anulada; }
 
     public LocalDateTime getFecha() { return fecha; }
     public void setFecha(LocalDateTime fecha) { this.fecha = fecha; }

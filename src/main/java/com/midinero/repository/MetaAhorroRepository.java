@@ -9,5 +9,7 @@ import java.util.List;
 @Repository
 public interface MetaAhorroRepository extends JpaRepository<MetaAhorro, Long> {
     List<MetaAhorro> findByUsuarioIdOrderByFechaInicioDesc(Long usuarioId);
-    List<MetaAhorro> findByUsuarioIdAndCompletada(Long usuarioId, Boolean completada);
+
+    // Nuevo: buscar metas por usuario y estado
+    List<MetaAhorro> findByUsuarioIdAndEstado(Long usuarioId, MetaAhorro.EstadoMeta estado);
 }

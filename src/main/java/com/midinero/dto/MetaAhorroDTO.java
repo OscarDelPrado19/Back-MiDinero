@@ -7,6 +7,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 import java.time.LocalDate;
 
 public class MetaAhorroDTO {
+
     private Long id;
 
     @NotBlank(message = "El nombre de la meta es obligatorio")
@@ -25,34 +26,74 @@ public class MetaAhorroDTO {
     @NotNull(message = "La fecha fin es obligatoria")
     private LocalDate fechaFin;
 
-    private Boolean completada;
+    private String estado; // ACTIVA, COMPLETADA, CANCELADA
     private Double porcentajeCompletado;
 
-    // Constructors
+
     public MetaAhorroDTO() {}
 
-    // Getters and Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public Double getMontoObjetivo() { return montoObjetivo; }
-    public void setMontoObjetivo(Double montoObjetivo) { this.montoObjetivo = montoObjetivo; }
+    public String getNombre() {
+        return nombre;
+    }
 
-    public Double getMontoActual() { return montoActual; }
-    public void setMontoActual(Double montoActual) { this.montoActual = montoActual; }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-    public LocalDate getFechaInicio() { return fechaInicio; }
-    public void setFechaInicio(LocalDate fechaInicio) { this.fechaInicio = fechaInicio; }
+    public Double getMontoObjetivo() {
+        return montoObjetivo;
+    }
 
-    public LocalDate getFechaFin() { return fechaFin; }
-    public void setFechaFin(LocalDate fechaFin) { this.fechaFin = fechaFin; }
+    public void setMontoObjetivo(Double montoObjetivo) {
+        this.montoObjetivo = montoObjetivo;
+    }
 
-    public Boolean getCompletada() { return completada; }
-    public void setCompletada(Boolean completada) { this.completada = completada; }
+    public Double getMontoActual() {
+        return montoActual;
+    }
 
-    public Double getPorcentajeCompletado() { return porcentajeCompletado; }
-    public void setPorcentajeCompletado(Double porcentajeCompletado) { this.porcentajeCompletado = porcentajeCompletado; }
+    public void setMontoActual(Double montoActual) {
+        this.montoActual = montoActual;
+    }
+
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public LocalDate getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(LocalDate fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public Double getPorcentajeCompletado() {
+        return porcentajeCompletado;
+    }
+
+    public void setPorcentajeCompletado(Double porcentajeCompletado) {
+        this.porcentajeCompletado = porcentajeCompletado;
+    }
+
 }
