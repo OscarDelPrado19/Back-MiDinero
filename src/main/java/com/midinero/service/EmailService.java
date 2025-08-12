@@ -8,7 +8,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 
 @Service
 public class EmailService {
@@ -18,9 +17,9 @@ public class EmailService {
 
     public void enviarEmailRecuperacion(String email, String token) {
         try {
-            // Leer plantilla desde resources/email.html
+            // Leer plantilla desde resources/email.html como stream
             ClassPathResource resource = new ClassPathResource("email.html");
-            String html = Files.readString(resource.getFile().toPath(), StandardCharsets.UTF_8);
+            String html = new String(resource.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
 
             // Reemplazar marcador por el token
             html = html.replace("{{TOKEN}}", token);
@@ -38,6 +37,7 @@ public class EmailService {
 
         } catch (Exception e) {
             System.err.println("Error al enviar email: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

@@ -41,6 +41,7 @@ com\midinero\service\TransaccionService.class
 com\midinero\config\WebSocketConfig.class
 com\midinero\repository\GlosarioRepository.class
 com\midinero\entity\Transaccion.class
+com\midinero\entity\MetaAhorro$EstadoMeta.class
 com\midinero\controller\UsuarioController.class
 com\midinero\dto\ApiResponse.class
 com\midinero\controller\GlosarioController.class
